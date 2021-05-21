@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        .game {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 660px;
+            height: 660px;
+            background-color: #B8B8B8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas {
+            background-color: #EAEAEA;
+            box-shadow: 0px 0px 14px 2px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="game">
+        <canvas width="600" height="600">
+    
+        </canvas>
+    </div>
+    <script>
+        const canvas = document.querySelector('canvas')
+        var context = canvas.getContext('2d')
+
+        const players = {
+            p1: {
+                positionX: 25,
+                positionY: 25,
+            }
+        }
+
+        var up = false, down = false, left = false, right = false
+
+        update()
+
+
+        document.addEventListener('keydown', (e) => {
+            keydownHandler(e)
+        })
+
+        document.addEventListener('keyup', (e) => {
+            keyupHandler(e)
+        })
+
+        function keydownHandler(e) {
+            const key = e.keyCode
+
+            if(key === 37 && key !== 39) {
+                left = true
+            }
+            if(key === 39 && key !== 37) {
+                right = true
+            }
+            if(key === 38 && key !== 40) {
+                up = true
+            } 
+            if(key === 40 && key !== 38) {
+                down = true
+            }
+        }
+
+        function keyupHandler(e) {
+            const key = e.keyCode
+
+            if(key === 37 && key !== 39) {
+                left = false
+            }
+            if(key === 39 && key !== 37) {
+                right = false
+            }
+            if(key === 38 && key !== 40) {
+                up = false
+            } 
+            if(key === 40 && key !== 38) {
+                down = false
+            }
+        }
+
+        function move() {
+
+            if(left) {
+                players.p1.positionX = players.p1.positionX - 25
+            }
+            if(right) {
+                players.p1.positionX = players.p1.positionX + 25
+            }
+            if(up) {
+                players.p1.positionY = players.p1.positionY - 25
+            } 
+            if(down) {
+                players.p1.positionY = players.p1.positionY + 25
+            }
+            colide()
+        }
+
+        function colide(){
+            if(players.p1.positionX + 50 > canvas.width) {
+                players.p1.positionX = players.p1.positionX - 25
+            }
+
+            if(players.p1.positionX < 0) {
+                players.p1.positionX = players.p1.positionX + 25
+            }
+
+            if(players.p1.positionY < 0) {
+                players.p1.positionY = players.p1.positionY + 25
+            }
+
+            if(players.p1.positionY + 50 > canvas.height) {
+                players.p1.positionY = players.p1.positionY - 25
+            }
+        }
+
+        function render() {
+            context.clearRect(0, 0, canvas.width, canvas.height)
+            context.fillRect( players.p1.positionX, players.p1.positionY, 50, 50)
+            context.fillRect( 50, 50, 50, 50)
+            context.fillStyle = '#b8b8b89d'
+        }
+
+        function update() {
+            requestAnimationFrame(update, canvas)
+            move()
+            render()
+        }
+
+    </script>
+</body>
+</html>

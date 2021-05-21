@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="statusbar enemy">
+            <div class="energybar enemy-energy">
+                <div class="e-energy enemys"></div>
+            </div>
+            <div class="health enemy-health">
+                <div class="e-healthpoint red"></div>
+                <div class="e-healthpoint red"></div>
+                <div class="e-healthpoint red"></div>
+                <div class="e-healthpoint red"></div>
+                <div class="e-healthpoint red"></div>
+            </div>
+        </div>
+        <div class="game">
+            <canvas width="30" height="30" id="screen">
+                
+            </canvas>
+        </div>
+        <div class="statusbar your">
+            <div class="energybar your-energy">
+                <div class="y-energy"></div>
+            </div>
+            <div class="health your-health">
+                <div class="y-healthpoint green"></div>
+                <div class="y-healthpoint green"></div>
+                <div class="y-healthpoint green"></div>
+                <div class="y-healthpoint red"></div>
+                <div class="y-healthpoint red"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/index.js"></script>
+</html>
