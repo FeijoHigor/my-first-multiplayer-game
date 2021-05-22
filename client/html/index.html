@@ -11,15 +11,17 @@
 <body>
     <div class="content">
         <div class="statusbar enemy">
-            <div class="energybar enemy-energy">
-                <div class="e-energy enemys"></div>
+            <div class="energybar">
+                <div class="e-energybar full"></div>
+                <div class="e-energybar full"></div>
+                <div class="e-energybar full"></div>
             </div>
             <div class="health enemy-health">
-                <div class="e-healthpoint red"></div>
-                <div class="e-healthpoint red"></div>
-                <div class="e-healthpoint red"></div>
-                <div class="e-healthpoint red"></div>
-                <div class="e-healthpoint red"></div>
+                <div class="e-healthpoint"></div>
+                <div class="e-healthpoint"></div>
+                <div class="e-healthpoint"></div>
+                <div class="e-healthpoint"></div>
+                <div class="e-healthpoint"></div>
             </div>
         </div>
         <div class="game">
@@ -28,16 +30,37 @@
             </canvas>
         </div>
         <div class="statusbar your">
-            <div class="energybar your-energy">
-                <div class="y-energy"></div>
+            <div class="energybar">
+                <div class="y-energybar full"></div>
+                <div class="y-energybar full"></div>
+                <div class="y-energybar full"></div>
             </div>
             <div class="health your-health">
-                <div class="y-healthpoint green"></div>
-                <div class="y-healthpoint green"></div>
-                <div class="y-healthpoint green"></div>
-                <div class="y-healthpoint red"></div>
-                <div class="y-healthpoint red"></div>
+                <div class="y-healthpoint"></div>
+                <div class="y-healthpoint"></div>
+                <div class="y-healthpoint"></div>
+                <div class="y-healthpoint"></div>
+                <div class="y-healthpoint"></div>
             </div>
+        </div>
+    </div>
+    <div class="test">
+        <h2>You</h2>
+        <div>
+            Health: <span id="health"></span>
+        </div>
+        <div>
+            Energy: <span id="energy"></span>
+        </div>
+    </div>
+
+    <div class="e-test">
+        <h2>Enemy</h2>
+        <div>
+            Health: <span id="e-health"></span>
+        </div>
+        <div>
+            Energy: <span id="e-energy"></span>
         </div>
     </div>
 </body>

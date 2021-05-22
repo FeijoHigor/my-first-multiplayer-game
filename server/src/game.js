@@ -10,7 +10,6 @@ function createGame() {
         state.players[playerId] = {
             x: playerX,
             y: playerY,
-            color,
             stamina,
             hp,
             bullets
@@ -49,8 +48,47 @@ function createGame() {
 
         var interval = 0
 
+        const enemyPosition = () => {
+            for(playerId in state.players) {
+                if(playerId !== bullet.player) {
+                    var enemy = state.players[playerId]
+                }
+            }
+
+            if(enemy) {
+                return { 
+                    position : {
+                        x: enemy.x, 
+                        y: enemy.y 
+                    },
+                    enemy}
+            }
+        }
+
         interval = setInterval(() => {
             bullet.y = bullet.y - 1
+            if(enemyPosition()) {
+                const { position, enemy } = enemyPosition()
+    
+                const colision = [ false, false ]
+    
+                if(bullet.x === position.x || bullet.x === position.x + 1 || bullet.x === position.x + 2) {
+                    colision[0] = true
+                }
+    
+                if( bullet.y === 27 - position.y || bullet.y === 27 - position.y + 1 || bullet.y === 27 - position.y + 2) {
+                    colision[1] = true
+                }
+    
+                if(colision[0] && colision[1]) {
+                    console.log('bateu')
+                    console.log(enemy.hp)
+                    removeBullet({ bulletId, player })
+                    enemy.hp--
+                    clearInterval(interval)
+                }
+            }
+            
             if(bullet.y < 0) {
                 removeBullet({ bulletId, player})
                 clearInterval(interval)
@@ -98,7 +136,7 @@ function createGame() {
                         bulletX: player.x + 1, 
                         bulletY: player.y 
                     })
-                    moveBullet({ bulletId, player })
+                    moveBullet({ bulletId, player, playerId })
                 }
             }
         }

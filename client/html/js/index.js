@@ -4,31 +4,40 @@ const context = screen.getContext('2d')
 const enemyHealthPoints = document.querySelectorAll('.e-healthpoint')
 const yourHealthPoints = document.querySelectorAll('.y-healthpoint')
 
-/* const enemyEnergy = document.querySelector('.e-energy')
- */
 const socket = io('http://localhost:3000')
+
+const health = document.getElementById('health')
+const energy = document.getElementById('energy')
+
+const eHealth = document.getElementById('e-health')
+const eEnergy = document.getElementById('e-energy')
 
 var gameState = {}
 var currentPlayer;
 
-function updateStatus() {
-    for(const playerId in gameState.players) {     
+function seeChanges() {
+    const you = gameState.players[currentPlayer]
+    health.textContent = you.hp
+    energy.textContent = you.stamina
+    for(playerId in gameState.players) {
         if(playerId !== currentPlayer) {
-            let player = gameState.players[playerId]
-            let hp = player.hp
-            for(let c = 0; c < hp ; c++) {
-                enemyHealthPoints[c].classList.add('green')
-            }
-        }else {
-            let player = gameState.players[playerId]
-            let hp = player.hp
-            for(let c = 0; c < hp ; c++) {
-                yourHealthPoints[c].classList.add('green')
+            const enemy = gameState.players[playerId]
+            eHealth.textContent = enemy.hp
+            eEnergy.textContent = enemy.stamina
+
+            if(enemy.hp === 0) {
+                window.alert("Você ganhou!! PARABENS!!")
+                window.location.reload()
             }
         }
     }
+
+    if(you.hp === 0) {
+        window.alert("Você perdeu!! TENTE DE NOVO!!")
+        window.location.reload()
+    }
 }
- 
+
 socket.on('you', ({ playerId }) => {
     currentPlayer = playerId
 })
@@ -36,56 +45,20 @@ socket.on('you', ({ playerId }) => {
 socket.on('setup', ({ state }) => {
     gameState = state
     renderScreen()
-    updateStatus()
 })
 
 socket.on('playerChange', ({ playerId, changes }) => {
     gameState.players[playerId] = changes
-    const countBullets = bulletCount()
-    
-    if(countBullets > 0) {
-        moveBullets()
-    }
 })
 
 socket.on('state', ({ state }) => {
     gameState = state
+    seeChanges()
 })
-
-function bulletCount() {
-    var count = 0
-    for(const playerId in gameState.players) {
-        const player = gameState.players[playerId]
-        for(const bullet in player.bullets) {
-            count++
-        }
-    } 
-
-    return count
-}
-
-function moveBullets() {
-    for(playerId in gameState.players) {
-        const player = gameState.players[playerId]
-        for(bulletId in player.bullets) {
-            const bullet = player.bullets[bulletId]
-            var interval
-
-            interval = setInterval(() => {
-                bullet.y = bullet.y - 1
-                if(bullet.y < 0) {
-                    clearInterval(interval)
-                }
-            }, 50)
-        }
-    }
-}
-
 
 document.addEventListener('keydown', (e) => {
     socket.emit('keyPress', { keyPressed: e.key })
 })
-
 
 function renderScreen() {
     context.clearRect(0, 0, screen.width, screen.height)

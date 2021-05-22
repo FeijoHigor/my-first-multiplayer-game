@@ -31,9 +31,24 @@ io.on('connection', (socket) => {
         bullets: {}
     })
 
-    /* setInterval(() => {
-        io.emit('state', {state: game.state})
-    }, 500) */
+    var newState = JSON.parse(JSON.stringify(game.state))
+    
+    function seeIqual(firstObj, secndObj) {
+        var firstObjJS = JSON.stringify(firstObj)
+        var secndObjJS = JSON.stringify(secndObj)
+
+        const isIqual = Object.is(firstObjJS, secndObjJS)
+
+        return isIqual
+    }
+
+    setInterval(() => {
+        const isEqual = seeIqual(game.state, newState)
+        if(!isEqual) {    
+            newState = JSON.parse(JSON.stringify(game.state))
+            io.emit('state', {state: game.state})
+        } 
+    }, 50)
 
     io.emit('setup', { state: game.state })
 
@@ -42,12 +57,10 @@ io.on('connection', (socket) => {
     socket.on('keyPress', (command) => {
         const { keyPressed } = command
         game.keyPressed({ playerId, keyPressed })
-        io.emit('playerChange', { changes: game.state.players[playerId], playerId })
     })
 
     socket.on('disconnect', () => {
         game.removePlayer({ playerId })
-        io.emit('state', { state: game.state })
     })
 })
 
