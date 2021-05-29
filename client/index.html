@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link rel="stylesheet" href="./css/home.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <script src="https://higor-multiplayer-game.herokuapp.com/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <h1>Socket.io</h1>
+        </header>
+        <form>
+            <div class="input one">
+                <input type="text" placeholder="Seu nick">
+            </div>
+            <div class="input two">
+                <input type="number" placeholder="Sala">
+                <select name="players">
+                    <option value="1">1x1</option>
+                    <option value="2">2x2</option>
+                    <option value="3">3x3</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <a class="enter">Entrar</a>
+                <a class="create">Criar sala</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

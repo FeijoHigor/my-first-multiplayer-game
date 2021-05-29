@@ -4,7 +4,7 @@ const context = screen.getContext('2d')
 const enemyHealthPoints = document.querySelectorAll('.e-healthpoint')
 const yourHealthPoints = document.querySelectorAll('.y-healthpoint')
 
-const socket = io('http://localhost:3000')
+const socket = io('https://higor-multiplayer-game.herokuapp.com')
 
 const health = document.getElementById('health')
 const energy = document.getElementById('energy')

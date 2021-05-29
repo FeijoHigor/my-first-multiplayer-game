@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Russo+One&display=swap');
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/background.svg') center no-repeat;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    max-height: 500px;
+    min-height: 400px;
+    justify-content: space-between;
+    width: 800px;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 100px;
+    font-family: 'Russo one';
+    color: #355BBE;
+    text-shadow: 0px -5px 10px rgba(0, 0, 0, 0.25);
+}
+
+form {
+    width: 100%;
+    height: 76%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input {
+    width: 55%;
+    height: 65px;
+}
+
+.input input {
+    border: none;
+    background-color: #ECECEC;
+    border-radius: 7px;
+    height: 100%;
+    box-shadow: 2px 1px 10px -1px rgba(0, 0, 0, 0.1);
+    padding-left: 25px;
+    font-size: 30px;
+    color: #181818;
+    transition: .3s;
+}
+
+.input input:hover,
+.input select:hover {
+    box-shadow: 2px 1px 13px -1px rgba(0, 0, 0, 0.25);
+}
+
+.one input {
+    width: 100%;
+}
+
+.two {
+    display: flex;
+    justify-content: space-between;
+}
+
+.two input {
+    width: 62%;
+}
+
+::-webkit-input-placeholder {
+    font-family: 'Ruda';
+    color: #989898;
+}
+
+.two select {
+    width: 34%;
+    height: 100%;
+    border-radius: 7px;
+    box-shadow: 2px 1px 10px -1px rgba(0, 0, 0, 0.1);
+    font-size: 22px;
+    color: #181818;
+    padding: 0 10px;
+    border: none;
+    background-color: #ECECEC;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 55%;
+    height: 65px;
+}
+
+a {
+    height: 100%;
+    border-radius: 7px;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Ruda';
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 2px 1px 10px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.enter {
+    background-color: #355BBE;
+    width: 62%;
+}
+
+.create {
+    background-color: #37C771;
+    width: 34%;
+    font-size: 25px;
+}
+
+.enter:hover {
+    background-color: #224ebe;
+    box-shadow: 2px 1px 13px -1px rgba(0, 0, 0, 0.25);
+}
+
+.create:hover {
+    background-color: #1eb45a;
+    box-shadow: 2px 1px 13px -1px rgba(0, 0, 0, 0.25);
+}

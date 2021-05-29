@@ -1,0 +1,27 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f)">
+<rect width="1440" height="900" fill="#EAEAEA"/>
+<rect width="100" height="100" transform="translate(98 654)" fill="#5EA7EA"/>
+<rect width="100" height="100" transform="translate(1029 533)" fill="#5EA7EA"/>
+<rect width="100" height="100" transform="translate(373 777)" fill="#5E75EA"/>
+<rect width="33" height="33" transform="translate(291 468)" fill="#3F5BEF"/>
+<rect width="33" height="33" transform="translate(518 633)" fill="#F53434"/>
+<rect width="33" height="33" transform="translate(1248 671)" fill="#F53434"/>
+<rect width="33" height="33" transform="translate(909 754)" fill="#F53434"/>
+<rect width="33" height="33" transform="translate(728 810)" fill="#F53434"/>
+<rect width="100" height="100" transform="translate(291 116)" fill="#EA5E5E"/>
+<rect width="100" height="100" transform="translate(792 167)" fill="#EA5E5E"/>
+<rect width="33" height="33" transform="translate(996 217)" fill="#138CFC"/>
+<rect width="100" height="100" transform="translate(1215 217)" fill="#EA5E5E"/>
+<rect width="1440" height="40" transform="translate(0 430)" fill="#B6D3FF" fill-opacity="0.19"/>
+<rect width="33" height="33" transform="translate(224 83)" fill="#138CFC"/>
+<rect width="33" height="33" transform="translate(591 133)" fill="#138CFC"/>
+</g>
+<defs>
+<filter id="filter0_f" x="-26" y="-26" width="1492" height="952" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="13" result="effect1_foregroundBlur"/>
+</filter>
+</defs>
+</svg>

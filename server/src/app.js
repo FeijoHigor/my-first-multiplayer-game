@@ -1,6 +1,8 @@
 const express = require('express')
 const http = require('http')
 
+const dotenv = require('dotenv').config()
+
 const createGame = require('./game')
 
 const app = express()
@@ -64,6 +66,13 @@ io.on('connection', (socket) => {
     })
 })
 
-server.listen(3000, () => {
+
+app.get('/', (req, res) => {
+    res.send('Hello')
+})
+
+const PORT = process.env.PORT || 3000
+
+server.listen(PORT, () => {
     console.log('server running')
 })
